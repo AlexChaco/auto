@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+html {
+  overflow-y: scroll; /* Scroll de la página */
+  scrollbar-width: none; /* Firefox oculta*/
+}
+
+html::-webkit-scrollbar {
+  width: 0;                 /* Chrome, Edge, Safari: barra invisible */
+  background: transparent;
+}
