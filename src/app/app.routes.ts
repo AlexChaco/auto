@@ -5,6 +5,7 @@ import { AboutmeComponent } from './pages/aboutme/aboutme.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { QouteComponent } from './pages/qoute/qoute.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactComponent },
   { path: 'agendar-cita', component: AppointmentComponent },
   { path: 'cotizar', component: QouteComponent },
+  { path: 'login', component: LoginComponent },
 ];

@@ -1,1 +1,72 @@
-<p>qoute works!</p>
+<section class="bg-white pt-16 px-6">
+  <div class="container mx-auto flex flex-col md:flex-row gap-12">
+
+    <!-- Columna izquierda: Formulario -->
+    <div class="md:w-1/2">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Solicitar cotización</h2>
+      <form [formGroup]="quoteForm" (ngSubmit)="submitQuote()" class="space-y-4">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Nombre completo"
+          class="w-full px-4 py-3 border-b border-blue-300 focus:outline-none focus:border-blue-600 bg-transparent"
+        />
+        <input
+          type="tel"
+          formControlName="phone"
+          placeholder="Teléfono"
+          class="w-full px-4 py-3 border-b border-blue-300 focus:outline-none focus:border-blue-600 bg-transparent"
+        />
+        
+        <!-- Multi-select productos -->
+        <label class="text-blue-600 font-semibold">Productos</label>
+        <div class="space-y-2">
+          <div *ngFor="let product of products; let i = index" class="flex items-center gap-2">
+            <input 
+              type="checkbox"
+              [formControlName]="product.name"
+              class="accent-blue-600"
+            />
+            <span>{{ product.name }} (S/{{ product.price }})</span>
+            <input
+              type="number"
+              [formControlName]="'qty_' + i"
+              placeholder="Cantidad"
+              min="1"
+              class="w-16 px-2 py-1 border-b border-blue-300 focus:outline-none focus:border-blue-600 bg-transparent"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mt-4"
+        >
+          Solicitar cotización
+        </button>
+      </form>
+    </div>
+
+    <!-- Columna derecha: Productos y servicios -->
+    <div class="md:w-1/2 space-y-6">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Productos y Servicios</h2>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">Productos</h3>
+        <div *ngFor="let product of products" class="flex justify-between border-b border-gray-200 pb-2">
+          <span>{{ product.name }}</span>
+          <span>S/{{ product.price }}</span>
+        </div>
+      </div>
+
+      <div class="space-y-4 mt-6">
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">Servicios</h3>
+        <div *ngFor="let service of services" class="flex justify-between border-b border-gray-200 pb-2">
+          <span>{{ service.name }}</span>
+          <span>S/{{ service.price }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
